@@ -7,13 +7,11 @@ package com.ipc2ss.cardmanager.backend.readers;
 import com.ipc2ss.cardmanager.backend.dataCard.CardData;
 import com.ipc2ss.cardmanager.enums.TextTypes;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
 import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import static com.ipc2ss.cardmanager.enums.TextTypes.*;
 
@@ -21,19 +19,13 @@ import static com.ipc2ss.cardmanager.enums.TextTypes.*;
  *
  * @author brigidoalvarado
  */
-public class TxtReader {
-
-    private static final String WORD = "\\w+";
-    private static final String START_PRT = "\\(";
-    private static final String END_PRT = "\\)";
-    private static final String CONTENT = ".*";
-    private static final String END_FORMAT = ";";
-    private static final Pattern pattern = Pattern.compile("^"+WORD+START_PRT+CONTENT+END_PRT+END_FORMAT+"$");
+public class TxtReader extends InfoReader{
 
     private String keyWord;
     private String complement;
 
-    public void readTxt(String txtPath) throws FileNotFoundException, IOException{
+    @Override
+    public List<CardData> read(String txtPath) throws FileNotFoundException, IOException{
 
         try (BufferedReader bufferedReader = new BufferedReader( new FileReader(txtPath));){
 
@@ -44,16 +36,16 @@ public class TxtReader {
 
             try {
                 TextTypes type = TextTypes.valueOf(keyWord);
-                readOption(type);
+                return readOption(type);
             } catch (IllegalArgumentException e){
                 System.out.println("error en el formato");
+                return null;
             }
+         }
+    }
 
-
-            }
-        }
-
-    private void validateFormat(String readText){
+    @Override
+    protected void validateFormat(String readText){
 
         Matcher matcher = pattern.matcher(readText);
         if (matcher.matches()){
@@ -73,11 +65,10 @@ public class TxtReader {
 
     }
 
-    private void readOption(TextTypes type){
+    private List<CardData> readOption(TextTypes type){
 
         switch (type) {
-            case TextTypes.SOLICITUD: System.out.println(SOLICITUD);
-                break;
+            case TextTypes.SOLICITUD: System.out.println(SOLICITUD); return null;
             case MOVIMIENTO: System.out.println(MOVIMIENTO);
                 break;
             case ESTADO_CUENTA: System.out.println(ESTADO_CUENTA);
@@ -90,7 +81,9 @@ public class TxtReader {
                 break;
             case AUTORIZACION_TARJETA: System.out.println(AUTORIZACION_TARJETA);
                 break;
+
         }
+        return null;
     }
 
 }
