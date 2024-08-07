@@ -24,31 +24,32 @@ public class RequestReader extends InfoReader {
     private double salary;
 
     @Override
-    public List<CardData> read(String text) throws CardManagerException {
+    public CardData read(String text) throws CardManagerException {
 
-        String[] data = text.split(",");
+        String[] data = text.split(COMMA);
         /////////////////////////////////////
         for(int i = 0; i < data.length; i++){
             System.out.println(data[i]);
         }
         ////////////////////////////////////
         if (data.length == NUMBER_DATA) {
-
+            //////////
+            System.out.println(data.length+" "+NUMBER_DATA);
             date = data[DATE];
             kind = data[KIND];
             address = data[ADDRESS];
             number = Integer.parseInt(data[NUMBER]);
             salary = Double.parseDouble(data[SALARY]);
             name = data[NAME];
-            addData();
-
+            return addData();
         } else {
+            System.out.println("holi");
             throw new CardManagerException("Formato invalido revise los valores dentro de los parentesis");
         }
-        return null;
+
     }
 
-    private void addData() throws CardManagerException {
+    private CardData addData() throws CardManagerException {
 
         Request request = new Request();
         request.setDate(date);
@@ -58,11 +59,11 @@ public class RequestReader extends InfoReader {
         } else {
             throw new CardManagerException("Tipo de tarjeta invalido");
         }
-
         request.setAddress(address);
         request.setNumber(number);
         request.setSalary(salary);
         request.setName(name);
+        return request;
 
     }
 }

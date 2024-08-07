@@ -5,6 +5,8 @@
 package com.ipc2ss.cardmanager.backend.readers;
 
 import com.ipc2ss.cardmanager.backend.dataCard.CardData;
+import com.ipc2ss.cardmanager.backend.dataCard.Query.Query;
+import com.ipc2ss.cardmanager.backend.dataCard.Transaction;
 import com.ipc2ss.cardmanager.backend.exception.CardManagerException;
 import com.ipc2ss.cardmanager.enums.TextTypes;
 
@@ -21,15 +23,21 @@ import static com.ipc2ss.cardmanager.enums.TextTypes.*;
  */
 public class TxtReader extends InfoReader{
 
+    private static final String WORD = "\\w+";
+    private static final String START_PRT = "\\(";
+    private static final String END_PRT = "\\)";
+    private static final String CONTENT = ".*";
+    private static final String END_FORMAT = ";";
     private static final Pattern pattern = Pattern.compile("^"+WORD+START_PRT+CONTENT+END_PRT+END_FORMAT+"$");
+
 
     private String keyWord;
     private String complement;
 
     @Override
-    public List<CardData> read(String txtPath) throws CardManagerException {
+    public CardData read(String text) throws CardManagerException {
 
-        try (BufferedReader bufferedReader = new BufferedReader( new FileReader(txtPath));){
+        try (BufferedReader bufferedReader = new BufferedReader( new FileReader(text));){
 
             String readText;
             while ( (readText = bufferedReader.readLine()) != null){
@@ -42,7 +50,10 @@ public class TxtReader extends InfoReader{
         } catch (IOException e){
             throw new CardManagerException("Error al cargar el archivo");
         } catch (IllegalArgumentException e){
-            throw new CardManagerException("Error en el formato");
+            //throw new CardManagerException("Error en el formato");
+            throw e;
+        } catch (CardManagerException e){
+            throw e;
         }
     }
 
@@ -67,27 +78,35 @@ public class TxtReader extends InfoReader{
 
     }
 
-    private List<CardData> readOption(TextTypes type) throws CardManagerException{
+    private CardData readOption(TextTypes type) throws CardManagerException{
+        ///////////
+        System.out.println(keyWord);
+        System.out.println(complement);
+        ///////////
 
         switch (type) {
             case TextTypes.SOLICITUD:
                 RequestReader request = new RequestReader();
-                System.out.println(keyWord);
-                System.out.println(complement);
-                request.read(complement);
-                return null;
+                return request.read(complement);
             case MOVIMIENTO: System.out.println(MOVIMIENTO);
-                break;
-            case ESTADO_CUENTA: System.out.println(ESTADO_CUENTA);
-                break;
-            case CONSULTAR_TARJETA: System.out.println(CONSULTAR_TARJETA);
-                break;
-            case CANCELACION_TARJETA: System.out.println(CANCELACION_TARJETA);
-                break;
+                TransactionReader transaction = new TransactionReader();
+                return transaction.read(complement);
+
+            case ESTADO_CUENTA:
+                AccountStatementReader account = new AccountStatementReader();
+                return account.read(complement);
+            case CONSULTAR_TARJETA:
+                QueryReader query = new QueryReader();
+                return query.read(complement);
+            case CANCELACION_TARJETA:
+                CancelationReader cancelation = new CancelationReader();
+                return cancelation.read(complement);
             case LISTADO_SOLICITUDES: System.out.println(LISTADO_SOLICITUDES);
                 break;
-            case AUTORIZACION_TARJETA: System.out.println(AUTORIZACION_TARJETA);
-                break;
+            case AUTORIZACION_TARJETA:
+                AuthorizationReader authorization = new AuthorizationReader();
+                return authorization.read(complement);
+            case LISTADO_TARJETAS:
 
         }
         return null;

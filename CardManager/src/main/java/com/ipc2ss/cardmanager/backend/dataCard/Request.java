@@ -1,15 +1,8 @@
 package com.ipc2ss.cardmanager.backend.dataCard;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-
-import java.time.LocalDate;
-
 public class Request extends  CardData{
     
-    private String date;
+    //private String date;
     private String kind;
     private String name;
     private String address;
@@ -18,6 +11,7 @@ public class Request extends  CardData{
 
     public void setDate(String date) {
         this.date = date;
+        super.transformationDate();
     }
 
     public void setKind(String kind) {

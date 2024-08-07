@@ -4,6 +4,7 @@
 
 package com.ipc2ss.cardmanager;
 
+import com.ipc2ss.cardmanager.backend.dataCard.CardData;
 import com.ipc2ss.cardmanager.backend.exception.CardManagerException;
 import com.ipc2ss.cardmanager.backend.readers.TxtReader;
 
@@ -21,7 +22,8 @@ public class CardManager {
 
         TxtReader reader = new TxtReader();
         try {
-            reader.read("/home/brigidoalvarado/Documentos/prueba.txt");
+            CardData dat = reader.read("/home/brigidoalvarado/Documentos/prueba.txt");
+            System.out.println(dat.toString());
         } catch (CardManagerException e) {
             System.out.println("Error: " + e.getMessage());
             e.printStackTrace();
