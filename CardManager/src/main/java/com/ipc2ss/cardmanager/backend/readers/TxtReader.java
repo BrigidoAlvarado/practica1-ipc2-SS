@@ -5,13 +5,13 @@
 package com.ipc2ss.cardmanager.backend.readers;
 
 import com.ipc2ss.cardmanager.backend.dataCard.CardData;
+import com.ipc2ss.cardmanager.backend.exception.CardManagerException;
 import com.ipc2ss.cardmanager.enums.TextTypes;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+
+import java.io.*;
 import java.util.List;
 import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static com.ipc2ss.cardmanager.enums.TextTypes.*;
 
@@ -21,11 +21,13 @@ import static com.ipc2ss.cardmanager.enums.TextTypes.*;
  */
 public class TxtReader extends InfoReader{
 
+    private static final Pattern pattern = Pattern.compile("^"+WORD+START_PRT+CONTENT+END_PRT+END_FORMAT+"$");
+
     private String keyWord;
     private String complement;
 
     @Override
-    public List<CardData> read(String txtPath) throws FileNotFoundException, IOException{
+    public List<CardData> read(String txtPath) throws CardManagerException {
 
         try (BufferedReader bufferedReader = new BufferedReader( new FileReader(txtPath));){
 
@@ -34,18 +36,18 @@ public class TxtReader extends InfoReader{
                 validateFormat(readText);
             }
 
-            try {
                 TextTypes type = TextTypes.valueOf(keyWord);
                 return readOption(type);
-            } catch (IllegalArgumentException e){
-                System.out.println("error en el formato");
-                return null;
-            }
-         }
+
+        } catch (IOException e){
+            throw new CardManagerException("Error al cargar el archivo");
+        } catch (IllegalArgumentException e){
+            throw new CardManagerException("Error en el formato");
+        }
     }
 
-    @Override
-    protected void validateFormat(String readText){
+
+    private void validateFormat(String readText){
 
         Matcher matcher = pattern.matcher(readText);
         if (matcher.matches()){
@@ -65,10 +67,15 @@ public class TxtReader extends InfoReader{
 
     }
 
-    private List<CardData> readOption(TextTypes type){
+    private List<CardData> readOption(TextTypes type) throws CardManagerException{
 
         switch (type) {
-            case TextTypes.SOLICITUD: System.out.println(SOLICITUD); return null;
+            case TextTypes.SOLICITUD:
+                RequestReader request = new RequestReader();
+                System.out.println(keyWord);
+                System.out.println(complement);
+                request.read(complement);
+                return null;
             case MOVIMIENTO: System.out.println(MOVIMIENTO);
                 break;
             case ESTADO_CUENTA: System.out.println(ESTADO_CUENTA);
