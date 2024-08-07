@@ -4,7 +4,6 @@ import com.ipc2ss.cardmanager.backend.dataCard.CardData;
 import com.ipc2ss.cardmanager.backend.dataCard.Request;
 import com.ipc2ss.cardmanager.backend.exception.CardManagerException;
 import com.ipc2ss.cardmanager.enums.RequestTypes;
-import java.util.List;
 
 public class RequestReader extends InfoReader {
 

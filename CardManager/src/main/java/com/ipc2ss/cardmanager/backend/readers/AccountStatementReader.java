@@ -20,15 +20,23 @@ public class AccountStatementReader extends InfoReader {
     @Override
     public CardData read(String text) throws CardManagerException {
         String[] data = text.split(COMMA);
-        for(int i = 0; i < data.length; i++){
-            System.out.println("dato no: "+ i + " " +data[i]);
-            // solicion posiblemente usando pattern y mattern
+
+        if(data.length == 4){
+            return new AccountStatement(
+                    data[NUMBER],
+                    data[KIND],
+                    data[BALANCE],
+                    data[INTEREST]
+            );
+        } else if (data.length == 3) {
+            return new AccountStatement(
+                    data[NUMBER],
+                    data[KIND],
+                    data[BALANCE],
+                    "0"
+            );
+        } else {
+            throw new CardManagerException("Formato invalido ");
         }
-        return new AccountStatement(
-                data[NUMBER],
-                data[KIND],
-                data[BALANCE],
-                data[INTEREST]
-        );
     }
 }

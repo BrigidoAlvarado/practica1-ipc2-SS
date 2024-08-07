@@ -17,11 +17,8 @@ public class AccountStatement extends CardData {
         } else {
             this.balance = 0;
         }
-        if (interest != null){
-            this.interest = Double.parseDouble(interest);
-        } else {
-            this.interest = 0;
-        }
+        this.interest = Double.parseDouble(interest);
+       //////////////////////////
         System.out.println(number + " " + kind + " " + balance + " " + interest);
     }
 }

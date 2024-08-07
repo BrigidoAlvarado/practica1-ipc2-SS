@@ -5,13 +5,10 @@
 package com.ipc2ss.cardmanager.backend.readers;
 
 import com.ipc2ss.cardmanager.backend.dataCard.CardData;
-import com.ipc2ss.cardmanager.backend.dataCard.Query.Query;
-import com.ipc2ss.cardmanager.backend.dataCard.Transaction;
 import com.ipc2ss.cardmanager.backend.exception.CardManagerException;
 import com.ipc2ss.cardmanager.enums.TextTypes;
 
 import java.io.*;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -37,7 +34,7 @@ public class TxtReader extends InfoReader{
     @Override
     public CardData read(String text) throws CardManagerException {
 
-        try (BufferedReader bufferedReader = new BufferedReader( new FileReader(text));){
+        try (BufferedReader bufferedReader = new BufferedReader( new FileReader(text))){
 
             String readText;
             while ( (readText = bufferedReader.readLine()) != null){
@@ -47,11 +44,10 @@ public class TxtReader extends InfoReader{
                 TextTypes type = TextTypes.valueOf(keyWord);
                 return readOption(type);
 
-        } catch (IOException e){
+        } catch (IOException | IllegalArgumentException e){
+            e.printStackTrace();
             throw new CardManagerException("Error al cargar el archivo");
-        } catch (IllegalArgumentException e){
-            //throw new CardManagerException("Error en el formato");
-            throw e;
+
         } catch (CardManagerException e){
             throw e;
         }
@@ -107,6 +103,8 @@ public class TxtReader extends InfoReader{
                 AuthorizationReader authorization = new AuthorizationReader();
                 return authorization.read(complement);
             case LISTADO_TARJETAS:
+                ListCardsReader cards = new ListCardsReader();
+                return cards.read(complement);
 
         }
         return null;

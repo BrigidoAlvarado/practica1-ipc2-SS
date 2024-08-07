@@ -1,6 +1,6 @@
 package com.ipc2ss.cardmanager.backend.dataCard;
 
-public class Request extends  CardData{
+public class Request extends CardData {
     
     //private String date;
     private String kind;
