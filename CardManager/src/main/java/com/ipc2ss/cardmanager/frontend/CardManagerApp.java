@@ -26,103 +26,202 @@ public class CardManagerApp extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        menuBar = new javax.swing.JMenuBar();
-        fileMenu = new javax.swing.JMenu();
-        openMenuItem = new javax.swing.JMenuItem();
-        saveMenuItem = new javax.swing.JMenuItem();
-        saveAsMenuItem = new javax.swing.JMenuItem();
-        exitMenuItem = new javax.swing.JMenuItem();
-        editMenu = new javax.swing.JMenu();
-        cutMenuItem = new javax.swing.JMenuItem();
-        copyMenuItem = new javax.swing.JMenuItem();
-        pasteMenuItem = new javax.swing.JMenuItem();
-        deleteMenuItem = new javax.swing.JMenuItem();
-        helpMenu = new javax.swing.JMenu();
-        contentsMenuItem = new javax.swing.JMenuItem();
-        aboutMenuItem = new javax.swing.JMenuItem();
+        jPanel1 = new javax.swing.JPanel();
+        chooseTxtButton = new javax.swing.JButton();
+        chooseFolderButton = new javax.swing.JButton();
+        chargejButton = new javax.swing.JButton();
+        speedsComboBox1 = new javax.swing.JComboBox<>();
+        EnterTextJLbl = new javax.swing.JLabel();
+        EndFolderJLbl1 = new javax.swing.JLabel();
+        speedsTextJLbl2 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        ArchivojMn = new javax.swing.JMenu();
+        NuevojMnItm = new javax.swing.JMenuItem();
+        OperacionejMn = new javax.swing.JMenu();
+        AutorizarjMnItm = new javax.swing.JMenuItem();
+        CancelarjMnItm = new javax.swing.JMenuItem();
+        MovimientosjMnItm = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        fileMenu.setMnemonic('f');
-        fileMenu.setText("File");
-
-        openMenuItem.setMnemonic('o');
-        openMenuItem.setText("Open");
-        fileMenu.add(openMenuItem);
-
-        saveMenuItem.setMnemonic('s');
-        saveMenuItem.setText("Save");
-        fileMenu.add(saveMenuItem);
-
-        saveAsMenuItem.setMnemonic('a');
-        saveAsMenuItem.setText("Save As ...");
-        saveAsMenuItem.setDisplayedMnemonicIndex(5);
-        fileMenu.add(saveAsMenuItem);
-
-        exitMenuItem.setMnemonic('x');
-        exitMenuItem.setText("Exit");
-        exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitMenuItemActionPerformed(evt);
+        setBackground(new java.awt.Color(51, 51, 51));
+        setMaximumSize(new java.awt.Dimension(2000, 2000));
+        addHierarchyListener(new java.awt.event.HierarchyListener() {
+            public void hierarchyChanged(java.awt.event.HierarchyEvent evt) {
+                formHierarchyChanged(evt);
             }
         });
-        fileMenu.add(exitMenuItem);
 
-        menuBar.add(fileMenu);
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        editMenu.setMnemonic('e');
-        editMenu.setText("Edit");
+        chooseTxtButton.setText("...");
+        chooseTxtButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chooseTxtButtonActionPerformed(evt);
+            }
+        });
 
-        cutMenuItem.setMnemonic('t');
-        cutMenuItem.setText("Cut");
-        editMenu.add(cutMenuItem);
+        chooseFolderButton.setText("...");
+        chooseFolderButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chooseFolderButtonActionPerformed(evt);
+            }
+        });
 
-        copyMenuItem.setMnemonic('y');
-        copyMenuItem.setText("Copy");
-        editMenu.add(copyMenuItem);
+        chargejButton.setText("CARGAR");
+        chargejButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chargejButtonActionPerformed(evt);
+            }
+        });
 
-        pasteMenuItem.setMnemonic('p');
-        pasteMenuItem.setText("Paste");
-        editMenu.add(pasteMenuItem);
+        speedsComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        speedsComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                speedsComboBox1ActionPerformed(evt);
+            }
+        });
 
-        deleteMenuItem.setMnemonic('d');
-        deleteMenuItem.setText("Delete");
-        editMenu.add(deleteMenuItem);
+        EnterTextJLbl.setBackground(new java.awt.Color(255, 255, 255));
+        EnterTextJLbl.setForeground(new java.awt.Color(0, 0, 0));
+        EnterTextJLbl.setText("Seleccionar Archivo de Entrada");
+        EnterTextJLbl.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
 
-        menuBar.add(editMenu);
+        EndFolderJLbl1.setBackground(new java.awt.Color(255, 255, 255));
+        EndFolderJLbl1.setForeground(new java.awt.Color(0, 0, 0));
+        EndFolderJLbl1.setText("Seleccionar Carpeta de Salida");
 
-        helpMenu.setMnemonic('h');
-        helpMenu.setText("Help");
+        speedsTextJLbl2.setBackground(new java.awt.Color(255, 255, 255));
+        speedsTextJLbl2.setForeground(new java.awt.Color(0, 0, 0));
+        speedsTextJLbl2.setText("Seleccionar Velocidad de Carga");
 
-        contentsMenuItem.setMnemonic('c');
-        contentsMenuItem.setText("Contents");
-        helpMenu.add(contentsMenuItem);
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(chargejButton)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(EndFolderJLbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(87, 87, 87))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(speedsTextJLbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(chooseFolderButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(speedsComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, 0, 78, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(EnterTextJLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(chooseTxtButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EnterTextJLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chooseTxtButton))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EndFolderJLbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chooseFolderButton))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(speedsComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(speedsTextJLbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addComponent(chargejButton)
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
 
-        aboutMenuItem.setMnemonic('a');
-        aboutMenuItem.setText("About");
-        helpMenu.add(aboutMenuItem);
+        ArchivojMn.setText("Archivo");
 
-        menuBar.add(helpMenu);
+        NuevojMnItm.setText("Nuevo");
+        NuevojMnItm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NuevojMnItmActionPerformed(evt);
+            }
+        });
+        ArchivojMn.add(NuevojMnItm);
 
-        setJMenuBar(menuBar);
+        jMenuBar1.add(ArchivojMn);
+
+        OperacionejMn.setText("Operaciones");
+
+        AutorizarjMnItm.setText("Autorizar");
+        OperacionejMn.add(AutorizarjMnItm);
+
+        CancelarjMnItm.setText("Cancelar");
+        OperacionejMn.add(CancelarjMnItm);
+
+        MovimientosjMnItm.setText("Movimientos");
+        MovimientosjMnItm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MovimientosjMnItmActionPerformed(evt);
+            }
+        });
+        OperacionejMn.add(MovimientosjMnItm);
+
+        jMenuBar1.add(OperacionejMn);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_exitMenuItemActionPerformed
+    private void formHierarchyChanged(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_formHierarchyChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formHierarchyChanged
+
+    private void chooseTxtButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseTxtButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chooseTxtButtonActionPerformed
+
+    private void chooseFolderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseFolderButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chooseFolderButtonActionPerformed
+
+    private void chargejButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        // TODO add your handling code here:
+        RequestForm requestFomr = new RequestForm();
+        requestFomr.setVisible(true);
+        //this.add(requestFomr);
+        System.out.println("el boton se fue presionado");
+    }           
+    // event_chargejButtonActionPerformed
+
+    private void speedsComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_speedsComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_speedsComboBox1ActionPerformed
+
+    private void NuevojMnItmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NuevojMnItmActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NuevojMnItmActionPerformed
+
+    private void MovimientosjMnItmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MovimientosjMnItmActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MovimientosjMnItmActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,20 +260,21 @@ public class CardManagerApp extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem aboutMenuItem;
-    private javax.swing.JMenuItem contentsMenuItem;
-    private javax.swing.JMenuItem copyMenuItem;
-    private javax.swing.JMenuItem cutMenuItem;
-    private javax.swing.JMenuItem deleteMenuItem;
-    private javax.swing.JMenu editMenu;
-    private javax.swing.JMenuItem exitMenuItem;
-    private javax.swing.JMenu fileMenu;
-    private javax.swing.JMenu helpMenu;
-    private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenuItem openMenuItem;
-    private javax.swing.JMenuItem pasteMenuItem;
-    private javax.swing.JMenuItem saveAsMenuItem;
-    private javax.swing.JMenuItem saveMenuItem;
+    private javax.swing.JMenu ArchivojMn;
+    private javax.swing.JMenuItem AutorizarjMnItm;
+    private javax.swing.JMenuItem CancelarjMnItm;
+    private javax.swing.JLabel EndFolderJLbl1;
+    private javax.swing.JLabel EnterTextJLbl;
+    private javax.swing.JMenuItem MovimientosjMnItm;
+    private javax.swing.JMenuItem NuevojMnItm;
+    private javax.swing.JMenu OperacionejMn;
+    private javax.swing.JButton chargejButton;
+    private javax.swing.JButton chooseFolderButton;
+    private javax.swing.JButton chooseTxtButton;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JComboBox<String> speedsComboBox1;
+    private javax.swing.JLabel speedsTextJLbl2;
     // End of variables declaration//GEN-END:variables
 
 }
