@@ -4,7 +4,7 @@ import com.ipc2ss.cardmanager.backend.dataCard.CardData;
 import com.ipc2ss.cardmanager.backend.exception.CardManagerException;
 import com.ipc2ss.cardmanager.enums.StatesTypes;
 
-public class ListCards extends CardData {
+public class CardsList extends CardData {
 
     private String kind;
     private double amount;
@@ -45,11 +45,11 @@ public class ListCards extends CardData {
 
        try {
            switch (StatesTypes.valueOf(state)){
-               case AUTORIZADA: this.state = "'true'";
-               case CANCELADA: this.state = "'false'";
+               case AUTORIZADA: this.state = TRUE;
+               case CANCELADA: this.state = FALSE;
            }
        }catch (IllegalArgumentException e){
-           this.state = "'true' or 'false'";
+           this.state = TRUE_OR_FALSE;
        }
 
 

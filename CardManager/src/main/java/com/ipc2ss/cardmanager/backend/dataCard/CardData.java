@@ -10,6 +10,9 @@ package com.ipc2ss.cardmanager.backend.dataCard;
  */
 public class CardData {
 
+    protected static final String TRUE = "true";
+    protected static final String FALSE = "false";
+    protected static final String TRUE_OR_FALSE = "true/false";
     private static final Character QUOTATION_MARK = '\"';
     private static final String SLASH = "/";
     private static final int DAY = 0;
@@ -18,10 +21,11 @@ public class CardData {
 
     protected String date;
 
-    protected void transformationDate(){
+    protected String transformationDate(String date){
         date = date.substring(1,date.length()-1);
         String[] oldDate = date.split(SLASH);
         date = QUOTATION_MARK + oldDate[YEAR] + SLASH + oldDate[MONTH] + SLASH + oldDate[DAY] + QUOTATION_MARK;
         System.out.println(date);
+        return date;
     }
 }

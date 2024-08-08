@@ -1,7 +1,7 @@
 package com.ipc2ss.cardmanager.backend.readers;
 
 import com.ipc2ss.cardmanager.backend.dataCard.CardData;
-import com.ipc2ss.cardmanager.backend.dataCard.Query.ListCards;
+import com.ipc2ss.cardmanager.backend.dataCard.Query.CardsList;
 import com.ipc2ss.cardmanager.backend.exception.CardManagerException;
 
 public class ListCardsReader extends  InfoReader{
@@ -22,7 +22,7 @@ public class ListCardsReader extends  InfoReader{
         for(int i = 0; i < data.length; i++){
             System.out.println(i+data[i]);
         }
-        ListCards cards = new ListCards();
+        CardsList cards = new CardsList();
 
         cards.setAmount((data[AMOUNT]));
         cards.setKind(data[KIND]);

@@ -1,4 +1,4 @@
-package com.ipc2ss.cardmanager.backend.realObjects;
+package com.ipc2ss.cardmanager.backend;
 
 public class Card {
 

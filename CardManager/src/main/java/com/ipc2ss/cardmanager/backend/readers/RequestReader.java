@@ -3,7 +3,7 @@ package com.ipc2ss.cardmanager.backend.readers;
 import com.ipc2ss.cardmanager.backend.dataCard.CardData;
 import com.ipc2ss.cardmanager.backend.dataCard.Request;
 import com.ipc2ss.cardmanager.backend.exception.CardManagerException;
-import com.ipc2ss.cardmanager.enums.RequestTypes;
+import com.ipc2ss.cardmanager.enums.CardsTypes;
 
 public class RequestReader extends InfoReader {
 
@@ -53,7 +53,7 @@ public class RequestReader extends InfoReader {
         Request request = new Request();
         request.setDate(date);
         //Se comprueba si el tipo forma parte de los tipos disponibles de tarjeta
-        if (kind.equals(RequestTypes.valueOf(kind).name())){
+        if (kind.equals(CardsTypes.valueOf(kind).name())){
             request.setKind(kind);
         } else {
             throw new CardManagerException("Tipo de tarjeta invalido");

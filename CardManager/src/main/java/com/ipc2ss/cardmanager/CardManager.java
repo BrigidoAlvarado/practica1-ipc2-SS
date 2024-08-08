@@ -10,7 +10,6 @@ import com.ipc2ss.cardmanager.backend.readers.TxtReader;
 
 import java.io.IOException;
 
-
 /**
  *
  * @author brigidoalvarado

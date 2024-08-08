@@ -1,6 +1,6 @@
 package com.ipc2ss.cardmanager.enums;
 
-public enum RequestTypes {
+public enum CardsTypes {
     NACIONAL,
     REGIONAL,
     INTERNACIONAL;

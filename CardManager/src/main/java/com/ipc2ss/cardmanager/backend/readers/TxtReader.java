@@ -76,8 +76,8 @@ public class TxtReader extends InfoReader{
 
     private CardData readOption(TextTypes type) throws CardManagerException{
         ///////////
-        System.out.println(keyWord);
-        System.out.println(complement);
+        System.out.println("key word "+keyWord);
+        System.out.println("complement "+complement);
         ///////////
 
         switch (type) {
@@ -87,7 +87,6 @@ public class TxtReader extends InfoReader{
             case MOVIMIENTO: System.out.println(MOVIMIENTO);
                 TransactionReader transaction = new TransactionReader();
                 return transaction.read(complement);
-
             case ESTADO_CUENTA:
                 AccountStatementReader account = new AccountStatementReader();
                 return account.read(complement);
@@ -95,10 +94,11 @@ public class TxtReader extends InfoReader{
                 QueryReader query = new QueryReader();
                 return query.read(complement);
             case CANCELACION_TARJETA:
-                CancelationReader cancelation = new CancelationReader();
-                return cancelation.read(complement);
-            case LISTADO_SOLICITUDES: System.out.println(LISTADO_SOLICITUDES);
-                break;
+                CancelationReader cancellation = new CancelationReader();
+                return cancellation.read(complement);
+            case LISTADO_SOLICITUDES:
+                RequestListReader requestList = new RequestListReader();
+                return requestList.read(complement);
             case AUTORIZACION_TARJETA:
                 AuthorizationReader authorization = new AuthorizationReader();
                 return authorization.read(complement);

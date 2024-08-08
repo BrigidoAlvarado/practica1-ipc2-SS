@@ -11,7 +11,7 @@ public class Request extends CardData {
 
     public void setDate(String date) {
         this.date = date;
-        super.transformationDate();
+        super.transformationDate(this.date);
     }
 
     public void setKind(String kind) {
