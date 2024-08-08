@@ -1,7 +1,9 @@
 package com.ipc2ss.cardmanager.backend.dataCard.Query;
 
 import com.ipc2ss.cardmanager.backend.dataCard.CardData;
+import com.ipc2ss.cardmanager.backend.exception.CardManagerException;
 import com.ipc2ss.cardmanager.enums.BooleanTypes;
+import com.ipc2ss.cardmanager.enums.CardsTypes;
 
 public class RequestsList extends CardData {
 
@@ -12,16 +14,33 @@ public class RequestsList extends CardData {
     private String state;
 
     public void setStartDate(String startDate) {
-        this.startDate = super.transformationDate(startDate);
+        if (startDate != "") {
+            //////
+            System.out.println("se ejecuta " + startDate);
+            this.startDate = super.transformationDate(startDate);
+        }
+
     }
 
     public void setEndDate(String endDate) {
-        this.endDate = super.transformationDate(endDate);
+        if (endDate != "") {
+            this.endDate = super.transformationDate(endDate);
+        }
+
         System.out.println("startDate " + startDate + " endDate " + endDate + " kind " + kind + " amount " + amount + " state " + state);
     }
 
-    public void setKind(String kind) {
-        if
+    public void setKind(String kind) throws CardManagerException {
+
+        try {
+            if (kind.equalsIgnoreCase(CardsTypes.valueOf(kind).name())){
+                this.kind = kind;
+            }
+        }catch(IllegalArgumentException e) {
+            if (!kind.equalsIgnoreCase("")){
+                throw new CardManagerException("Tipo de tarjeta invalido: " + kind);
+            }
+        }
     }
 
     public void setAmount(String amount) {

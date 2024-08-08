@@ -12,7 +12,7 @@ public class CardData {
 
     protected static final String TRUE = "true";
     protected static final String FALSE = "false";
-    protected static final String TRUE_OR_FALSE = "true/false";
+    protected static final String TRUE_OR_FALSE = "true or false";
     private static final Character QUOTATION_MARK = '\"';
     private static final String SLASH = "/";
     private static final int DAY = 0;
