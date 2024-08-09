@@ -6,15 +6,23 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="ArchivojMn">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Archivo"/>
+            <Property name="text" type="java.lang.String" value="Nuevo"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="NuevaCargajMnItm">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Nueva Carga"/>
+                <Property name="text" type="java.lang.String" value=" Cargar Archivo"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NuevaCargajMnItmActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="SolicitudjMnItm">
+              <Properties>
+                <Property name="text" type="java.lang.String" value=" Solicitud"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SolicitudjMnItmActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -51,7 +59,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="consultarTarjetajMnItm">
               <Properties>
-                <Property name="text" type="java.lang.String" value="ConsultarTarjetajMnItm"/>
+                <Property name="text" type="java.lang.String" value="Consultar Tarjeta"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="estadoCuentajMnItm">

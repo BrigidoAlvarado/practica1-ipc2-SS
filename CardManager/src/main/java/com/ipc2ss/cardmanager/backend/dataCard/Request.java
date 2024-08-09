@@ -10,8 +10,7 @@ public class Request extends CardData {
     private double salary;
 
     public void setDate(String date) {
-        this.date = date;
-        super.transformationDate(this.date);
+        this.date = super.transformationDate(date);
     }
 
     public void setKind(String kind) {

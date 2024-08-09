@@ -4,6 +4,8 @@
  */
 package com.ipc2ss.cardmanager.frontend;
 
+import com.ipc2ss.cardmanager.backend.exception.CardManagerException;
+import com.ipc2ss.cardmanager.backend.readers.TxtReader;
 import javax.swing.JDesktopPane;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -50,6 +52,7 @@ public class CardManagerApp extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         ArchivojMn = new javax.swing.JMenu();
         NuevaCargajMnItm = new javax.swing.JMenuItem();
+        SolicitudjMnItm = new javax.swing.JMenuItem();
         OperacionejMn = new javax.swing.JMenu();
         MovimientosjMnItm = new javax.swing.JMenuItem();
         AutorizarjMnItm = new javax.swing.JMenuItem();
@@ -178,15 +181,23 @@ public class CardManagerApp extends javax.swing.JFrame {
 
         entriesFilejDsktpPn.add(logtexjPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 8, -1, -1));
 
-        ArchivojMn.setText("Archivo");
+        ArchivojMn.setText("Nuevo");
 
-        NuevaCargajMnItm.setText("Nueva Carga");
+        NuevaCargajMnItm.setText(" Cargar Archivo");
         NuevaCargajMnItm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NuevaCargajMnItmActionPerformed(evt);
             }
         });
         ArchivojMn.add(NuevaCargajMnItm);
+
+        SolicitudjMnItm.setText(" Solicitud");
+        SolicitudjMnItm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SolicitudjMnItmActionPerformed(evt);
+            }
+        });
+        ArchivojMn.add(SolicitudjMnItm);
 
         jMenuBar1.add(ArchivojMn);
 
@@ -210,7 +221,7 @@ public class CardManagerApp extends javax.swing.JFrame {
 
         ConsultasjMn.setText("Consultas");
 
-        consultarTarjetajMnItm.setText("ConsultarTarjetajMnItm");
+        consultarTarjetajMnItm.setText("Consultar Tarjeta");
         ConsultasjMn.add(consultarTarjetajMnItm);
 
         estadoCuentajMnItm.setText("Estado de cuenta");
@@ -288,6 +299,14 @@ public class CardManagerApp extends javax.swing.JFrame {
             chooseTxtButton.setVisible(false);
             speedsComboBox.setVisible(false);
             chargejButton.setVisible(false);
+            
+            try {
+                TxtReader reader = new TxtReader();
+            reader.read(entryPath);
+            } catch (CardManagerException e) {
+                JOptionPane.showMessageDialog(this, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+            
         }
     }           
     // event_chargejButtonActionPerformed
@@ -316,6 +335,11 @@ public class CardManagerApp extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_MovimientosjMnItmActionPerformed
 
+    private void SolicitudjMnItmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SolicitudjMnItmActionPerformed
+            
+        
+    }//GEN-LAST:event_SolicitudjMnItmActionPerformed
+
     private void readerTxt(){
         
     }
@@ -331,6 +355,7 @@ public class CardManagerApp extends javax.swing.JFrame {
     private javax.swing.JMenuItem MovimientosjMnItm;
     private javax.swing.JMenuItem NuevaCargajMnItm;
     private javax.swing.JMenu OperacionejMn;
+    private javax.swing.JMenuItem SolicitudjMnItm;
     private javax.swing.JButton chargejButton;
     private javax.swing.JButton chooseFolderButton;
     private javax.swing.JButton chooseTxtButton;

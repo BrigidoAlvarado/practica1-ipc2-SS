@@ -1,5 +1,6 @@
 package com.ipc2ss.cardmanager.backend.readers;
 
+import com.ipc2ss.cardmanager.DBConnection.RequestConnection;
 import com.ipc2ss.cardmanager.backend.dataCard.CardData;
 import com.ipc2ss.cardmanager.backend.dataCard.Request;
 import com.ipc2ss.cardmanager.backend.exception.CardManagerException;
@@ -42,7 +43,6 @@ public class RequestReader extends InfoReader {
             name = data[NAME];
             return addData();
         } else {
-            System.out.println("holi");
             throw new CardManagerException("Formato invalido revise los valores dentro de los parentesis");
         }
 
@@ -62,6 +62,8 @@ public class RequestReader extends InfoReader {
         request.setNumber(number);
         request.setSalary(salary);
         request.setName(name);
+
+        RequestConnection.saveRequest(request);
         return request;
 
     }
