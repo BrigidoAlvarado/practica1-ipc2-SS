@@ -4,6 +4,11 @@
  */
 package com.ipc2ss.cardmanager.frontend;
 
+import javax.swing.JDesktopPane;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 /**
  *
  * @author brigidoalvarado
@@ -13,8 +18,13 @@ public class CardManagerApp extends javax.swing.JFrame {
     /**
      * Creates new form CardManaerApp
      */
+    private String entryPath;
+    private String exitPath;
+    
     public CardManagerApp() {
         initComponents();
+        
+        
     }
 
     /**
@@ -26,40 +36,42 @@ public class CardManagerApp extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        chooseTxtButton = new javax.swing.JButton();
+        entriesFilejDsktpPn = new javax.swing.JDesktopPane();
         chooseFolderButton = new javax.swing.JButton();
+        chooseTxtButton = new javax.swing.JButton();
+        speedsComboBox = new javax.swing.JComboBox<>();
         chargejButton = new javax.swing.JButton();
-        speedsComboBox1 = new javax.swing.JComboBox<>();
+        chooserTextjPnl = new javax.swing.JPanel();
         EnterTextJLbl = new javax.swing.JLabel();
-        EndFolderJLbl1 = new javax.swing.JLabel();
-        speedsTextJLbl2 = new javax.swing.JLabel();
+        fileChooserjPnl = new javax.swing.JPanel();
+        endFolderJLbl1 = new javax.swing.JLabel();
+        logtexjPnl = new javax.swing.JPanel();
+        logTextJLb = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         ArchivojMn = new javax.swing.JMenu();
-        NuevojMnItm = new javax.swing.JMenuItem();
+        NuevaCargajMnItm = new javax.swing.JMenuItem();
         OperacionejMn = new javax.swing.JMenu();
+        MovimientosjMnItm = new javax.swing.JMenuItem();
         AutorizarjMnItm = new javax.swing.JMenuItem();
         CancelarjMnItm = new javax.swing.JMenuItem();
-        MovimientosjMnItm = new javax.swing.JMenuItem();
+        ConsultasjMn = new javax.swing.JMenu();
+        consultarTarjetajMnItm = new javax.swing.JMenuItem();
+        estadoCuentajMnItm = new javax.swing.JMenuItem();
+        listadoSolicitudesjMnItm = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 51, 51));
-        setMaximumSize(new java.awt.Dimension(2000, 2000));
         addHierarchyListener(new java.awt.event.HierarchyListener() {
             public void hierarchyChanged(java.awt.event.HierarchyEvent evt) {
                 formHierarchyChanged(evt);
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        chooseTxtButton.setText("...");
-        chooseTxtButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chooseTxtButtonActionPerformed(evt);
-            }
-        });
+        entriesFilejDsktpPn.setBackground(new java.awt.Color(51, 51, 51));
+        entriesFilejDsktpPn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        entriesFilejDsktpPn.setForeground(new java.awt.Color(153, 153, 153));
+        entriesFilejDsktpPn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         chooseFolderButton.setText("...");
         chooseFolderButton.addActionListener(new java.awt.event.ActionListener() {
@@ -67,98 +79,120 @@ public class CardManagerApp extends javax.swing.JFrame {
                 chooseFolderButtonActionPerformed(evt);
             }
         });
+        entriesFilejDsktpPn.add(chooseFolderButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 120, 66, -1));
 
-        chargejButton.setText("CARGAR");
+        chooseTxtButton.setText("...");
+        chooseTxtButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chooseTxtButtonActionPerformed(evt);
+            }
+        });
+        entriesFilejDsktpPn.add(chooseTxtButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(308, 67, 66, 29));
+
+        speedsComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        speedsComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                speedsComboBoxActionPerformed(evt);
+            }
+        });
+        entriesFilejDsktpPn.add(speedsComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(196, 170, 78, -1));
+
+        chargejButton.setText("cargar");
         chargejButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chargejButtonActionPerformed(evt);
             }
         });
+        entriesFilejDsktpPn.add(chargejButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(304, 171, 76, -1));
 
-        speedsComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        speedsComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                speedsComboBox1ActionPerformed(evt);
-            }
-        });
+        chooserTextjPnl.setBackground(new java.awt.Color(255, 255, 255));
+        chooserTextjPnl.setForeground(new java.awt.Color(255, 255, 255));
 
         EnterTextJLbl.setBackground(new java.awt.Color(255, 255, 255));
         EnterTextJLbl.setForeground(new java.awt.Color(0, 0, 0));
+        EnterTextJLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         EnterTextJLbl.setText("Seleccionar Archivo de Entrada");
         EnterTextJLbl.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
 
-        EndFolderJLbl1.setBackground(new java.awt.Color(255, 255, 255));
-        EndFolderJLbl1.setForeground(new java.awt.Color(0, 0, 0));
-        EndFolderJLbl1.setText("Seleccionar Carpeta de Salida");
-
-        speedsTextJLbl2.setBackground(new java.awt.Color(255, 255, 255));
-        speedsTextJLbl2.setForeground(new java.awt.Color(0, 0, 0));
-        speedsTextJLbl2.setText("Seleccionar Velocidad de Carga");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(chargejButton)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(EndFolderJLbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(87, 87, 87))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(speedsTextJLbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(chooseFolderButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(speedsComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, 0, 78, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(EnterTextJLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(chooseTxtButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, Short.MAX_VALUE))
+        javax.swing.GroupLayout chooserTextjPnlLayout = new javax.swing.GroupLayout(chooserTextjPnl);
+        chooserTextjPnl.setLayout(chooserTextjPnlLayout);
+        chooserTextjPnlLayout.setHorizontalGroup(
+            chooserTextjPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(EnterTextJLbl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(EnterTextJLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(chooseTxtButton))
-                .addGap(27, 27, 27)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(EndFolderJLbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(chooseFolderButton))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(speedsComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(speedsTextJLbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addComponent(chargejButton)
-                .addContainerGap(27, Short.MAX_VALUE))
+        chooserTextjPnlLayout.setVerticalGroup(
+            chooserTextjPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, chooserTextjPnlLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(EnterTextJLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        entriesFilejDsktpPn.add(chooserTextjPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 67, -1, -1));
+
+        fileChooserjPnl.setBackground(new java.awt.Color(255, 255, 255));
+        fileChooserjPnl.setForeground(new java.awt.Color(255, 255, 255));
+
+        endFolderJLbl1.setBackground(new java.awt.Color(255, 255, 255));
+        endFolderJLbl1.setForeground(new java.awt.Color(0, 0, 0));
+        endFolderJLbl1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        endFolderJLbl1.setText("Seleccionar Carpeta de Salida");
+
+        javax.swing.GroupLayout fileChooserjPnlLayout = new javax.swing.GroupLayout(fileChooserjPnl);
+        fileChooserjPnl.setLayout(fileChooserjPnlLayout);
+        fileChooserjPnlLayout.setHorizontalGroup(
+            fileChooserjPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fileChooserjPnlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(endFolderJLbl1, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        fileChooserjPnlLayout.setVerticalGroup(
+            fileChooserjPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fileChooserjPnlLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(endFolderJLbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        entriesFilejDsktpPn.add(fileChooserjPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 123, -1, -1));
+
+        logtexjPnl.setBackground(new java.awt.Color(255, 255, 255));
+        logtexjPnl.setForeground(new java.awt.Color(255, 255, 255));
+
+        logTextJLb.setBackground(new java.awt.Color(255, 255, 255));
+        logTextJLb.setForeground(new java.awt.Color(0, 0, 0));
+        logTextJLb.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logTextJLb.setText("...");
+
+        javax.swing.GroupLayout logtexjPnlLayout = new javax.swing.GroupLayout(logtexjPnl);
+        logtexjPnl.setLayout(logtexjPnlLayout);
+        logtexjPnlLayout.setHorizontalGroup(
+            logtexjPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(logTextJLb, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)
+        );
+        logtexjPnlLayout.setVerticalGroup(
+            logtexjPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, logtexjPnlLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(logTextJLb, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        entriesFilejDsktpPn.add(logtexjPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 8, -1, -1));
 
         ArchivojMn.setText("Archivo");
 
-        NuevojMnItm.setText("Nuevo");
-        NuevojMnItm.addActionListener(new java.awt.event.ActionListener() {
+        NuevaCargajMnItm.setText("Nueva Carga");
+        NuevaCargajMnItm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NuevojMnItmActionPerformed(evt);
+                NuevaCargajMnItmActionPerformed(evt);
             }
         });
-        ArchivojMn.add(NuevojMnItm);
+        ArchivojMn.add(NuevaCargajMnItm);
 
         jMenuBar1.add(ArchivojMn);
 
         OperacionejMn.setText("Operaciones");
 
-        AutorizarjMnItm.setText("Autorizar");
-        OperacionejMn.add(AutorizarjMnItm);
-
-        CancelarjMnItm.setText("Cancelar");
-        OperacionejMn.add(CancelarjMnItm);
-
-        MovimientosjMnItm.setText("Movimientos");
+        MovimientosjMnItm.setText("Movimiento");
         MovimientosjMnItm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MovimientosjMnItmActionPerformed(evt);
@@ -166,7 +200,29 @@ public class CardManagerApp extends javax.swing.JFrame {
         });
         OperacionejMn.add(MovimientosjMnItm);
 
+        AutorizarjMnItm.setText("Autorizar");
+        OperacionejMn.add(AutorizarjMnItm);
+
+        CancelarjMnItm.setText("Cancelar");
+        OperacionejMn.add(CancelarjMnItm);
+
         jMenuBar1.add(OperacionejMn);
+
+        ConsultasjMn.setText("Consultas");
+
+        consultarTarjetajMnItm.setText("ConsultarTarjetajMnItm");
+        ConsultasjMn.add(consultarTarjetajMnItm);
+
+        estadoCuentajMnItm.setText("Estado de cuenta");
+        ConsultasjMn.add(estadoCuentajMnItm);
+
+        listadoSolicitudesjMnItm.setText("Listado de Solicitudes");
+        ConsultasjMn.add(listadoSolicitudesjMnItm);
+
+        jMenuItem1.setText("Listado de Tarjetas");
+        ConsultasjMn.add(jMenuItem1);
+
+        jMenuBar1.add(ConsultasjMn);
 
         setJMenuBar(jMenuBar1);
 
@@ -175,16 +231,16 @@ public class CardManagerApp extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(entriesFilejDsktpPn, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(14, Short.MAX_VALUE)
+                .addComponent(entriesFilejDsktpPn, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
         );
 
         pack();
@@ -195,86 +251,101 @@ public class CardManagerApp extends javax.swing.JFrame {
     }//GEN-LAST:event_formHierarchyChanged
 
     private void chooseTxtButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseTxtButtonActionPerformed
-        // TODO add your handling code here:
+    JFileChooser jFileChooser = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("*.TXT", "txt");
+        jFileChooser.setFileFilter(filter);
+        int selection = jFileChooser.showOpenDialog(this);
+        
+        if (selection == JFileChooser.APPROVE_OPTION) {
+            entryPath = jFileChooser.getSelectedFile().getAbsolutePath();
+             EnterTextJLbl.setText(jFileChooser.getSelectedFile().getName());
+        }
     }//GEN-LAST:event_chooseTxtButtonActionPerformed
 
     private void chooseFolderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseFolderButtonActionPerformed
-        // TODO add your handling code here:
+        JFileChooser jFileChooser = new JFileChooser();
+        jFileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        int selection = jFileChooser.showOpenDialog(this);
+       
+        if (selection == JFileChooser.APPROVE_OPTION ) {
+            exitPath = jFileChooser.getSelectedFile().getAbsolutePath();
+            endFolderJLbl1.setText(jFileChooser.getSelectedFile().getName());
+        }
     }//GEN-LAST:event_chooseFolderButtonActionPerformed
 
     private void chargejButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
-        // TODO add your handling code here:
-        RequestForm requestFomr = new RequestForm();
-        requestFomr.setVisible(true);
-        //this.add(requestFomr);
-        System.out.println("el boton se fue presionado");
+
+        if (entryPath == null  &&  exitPath == null) {
+             JOptionPane.showMessageDialog(this, "Seleccione un archivo de texto y una carpeta para poder continuar por favor", " ARCHIVOS FALTANTES", JOptionPane.INFORMATION_MESSAGE);
+
+        } else if (entryPath == null) {
+                       JOptionPane.showMessageDialog(this, "Seleccione un archivo de texto para cargar sus respectivas solicitudes por favor", " ARCHIVO DE TEXTO FALTANTE", JOptionPane.INFORMATION_MESSAGE);
+
+        } else if (exitPath  == null){
+                       JOptionPane.showMessageDialog(this, "Seleccione una carpeta paraa cargar sus posibles reportes", " CARPETA DE SALIDA FALTANTE", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            chooseFolderButton.setVisible(false);
+            chooseTxtButton.setVisible(false);
+            speedsComboBox.setVisible(false);
+            chargejButton.setVisible(false);
+        }
     }           
     // event_chargejButtonActionPerformed
 
-    private void speedsComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_speedsComboBox1ActionPerformed
+    private void speedsComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_speedsComboBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_speedsComboBox1ActionPerformed
+    }//GEN-LAST:event_speedsComboBoxActionPerformed
 
-    private void NuevojMnItmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NuevojMnItmActionPerformed
+    private void NuevaCargajMnItmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NuevaCargajMnItmActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_NuevojMnItmActionPerformed
+        entryPath = null;
+        exitPath = null;
+        entriesFilejDsktpPn.setVisible(true);
+        logTextJLb.setText("...");
+        chooseFolderButton.setVisible(true);
+        chooseTxtButton.setVisible(true);
+        speedsComboBox.setVisible(true);
+        chargejButton.setVisible(true);
+        endFolderJLbl1.setText("Seleccionar Archivo de Entrada");
+        EnterTextJLbl.setText("Seleccionar Carpeta de Salida");
+        speedsComboBox.setSelectedIndex(0);
+        
+    }//GEN-LAST:event_NuevaCargajMnItmActionPerformed
 
     private void MovimientosjMnItmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MovimientosjMnItmActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_MovimientosjMnItmActionPerformed
 
+    private void readerTxt(){
+        
+    }
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CardManagerApp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CardManagerApp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CardManagerApp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CardManagerApp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CardManagerApp().setVisible(true);
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu ArchivojMn;
     private javax.swing.JMenuItem AutorizarjMnItm;
     private javax.swing.JMenuItem CancelarjMnItm;
-    private javax.swing.JLabel EndFolderJLbl1;
+    private javax.swing.JMenu ConsultasjMn;
     private javax.swing.JLabel EnterTextJLbl;
     private javax.swing.JMenuItem MovimientosjMnItm;
-    private javax.swing.JMenuItem NuevojMnItm;
+    private javax.swing.JMenuItem NuevaCargajMnItm;
     private javax.swing.JMenu OperacionejMn;
     private javax.swing.JButton chargejButton;
     private javax.swing.JButton chooseFolderButton;
     private javax.swing.JButton chooseTxtButton;
+    private javax.swing.JPanel chooserTextjPnl;
+    private javax.swing.JMenuItem consultarTarjetajMnItm;
+    private javax.swing.JLabel endFolderJLbl1;
+    private javax.swing.JDesktopPane entriesFilejDsktpPn;
+    private javax.swing.JMenuItem estadoCuentajMnItm;
+    private javax.swing.JPanel fileChooserjPnl;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JComboBox<String> speedsComboBox1;
-    private javax.swing.JLabel speedsTextJLbl2;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem listadoSolicitudesjMnItm;
+    private javax.swing.JLabel logTextJLb;
+    private javax.swing.JPanel logtexjPnl;
+    private javax.swing.JComboBox<String> speedsComboBox;
     // End of variables declaration//GEN-END:variables
 
 }
